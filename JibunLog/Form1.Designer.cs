@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtViewer = new System.Windows.Forms.TextBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.btnWrite = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnLogFolder = new System.Windows.Forms.Button();
+            this.timScroll = new System.Windows.Forms.Timer(this.components);
+            this.btnReload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,11 +113,26 @@
             this.btnLogFolder.UseVisualStyleBackColor = true;
             this.btnLogFolder.Click += new System.EventHandler(this.btnLogFolder_Click);
             // 
+            // timScroll
+            // 
+            this.timScroll.Tick += new System.EventHandler(this.timScroll_Tick);
+            // 
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(8, 0);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(75, 23);
+            this.btnReload.TabIndex = 5;
+            this.btnReload.Text = "再読込";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnLogFolder);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
@@ -137,6 +155,8 @@
         private System.Windows.Forms.Button btnWrite;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnLogFolder;
+        private System.Windows.Forms.Timer timScroll;
+        private System.Windows.Forms.Button btnReload;
     }
 }
 

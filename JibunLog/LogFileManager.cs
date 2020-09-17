@@ -90,10 +90,18 @@ namespace JibunLog
         {
             using (StreamWriter sw = new StreamWriter(filePath, true))
             {
-                sw.WriteLine(GetHeader());
-                sw.WriteLine(text);
-                sw.WriteLine();
+                sw.Write(text);
             }
+        }
+
+        /// <summary>
+        /// 書き込む内容を生成します。
+        /// </summary>
+        /// <param name="text">入力文章</param>
+        /// <returns>書き込む内容</returns>
+        public static string GetLogSentence(string text)
+        {
+            return GetHeader() + "\r\n" + text + "\r\n\r\n";
         }
 
         /// <summary>
