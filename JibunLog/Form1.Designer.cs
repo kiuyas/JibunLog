@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txtViewer = new System.Windows.Forms.TextBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.btnWrite = new System.Windows.Forms.Button();
@@ -135,6 +136,7 @@
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.btnLogFolder);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "自分ログ";
             this.Load += new System.EventHandler(this.Form1_Load);
