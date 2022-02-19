@@ -11,6 +11,9 @@ namespace JibunLog
         /// <summary>ログフォルダ名</summary>
         private const string LOG_FOLDER_NAME = "logs";
 
+        /// <summary>行区切り</summary>
+        public const string LINE_SEPARATOR = "\r\n";
+
         /// <summary>
         /// ログフォルダのパスを取得します。
         /// フォルダが存在しない場合は作成します。
@@ -101,7 +104,7 @@ namespace JibunLog
         /// <returns>書き込む内容</returns>
         public static string GetLogSentence(string text)
         {
-            return GetHeader() + "\r\n" + text + "\r\n\r\n";
+            return GetHeader() + LINE_SEPARATOR + text + LINE_SEPARATOR + LINE_SEPARATOR;
         }
 
         /// <summary>
@@ -110,7 +113,25 @@ namespace JibunLog
         /// <returns>ヘッダ文字列</returns>
         private static string GetHeader()
         {
-            return string.Format("[{0}] ", DateTime.Now.ToString("MM/dd HH:mm:ss"));
+            return string.Format("[{0}] ", GetDateTimeString());
+        }
+
+        /// <summary>
+        /// 日時文字列を取得します。
+        /// </summary>
+        /// <returns></returns>
+        private static string GetDateTimeString()
+        {
+            return DateTime.Now.ToString("MM/dd HH:mm:ss");
+        }
+
+        /// <summary>
+        /// 日付文字列を取得します。
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDateString()
+        {
+            return DateTime.Now.ToString("MM/dd");
         }
 
         /// <summary>

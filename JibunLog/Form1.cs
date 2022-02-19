@@ -42,29 +42,36 @@ namespace JibunLog
         /// <param name="e">イベント引数</param>
         private void btnWrite_Click(object sender, EventArgs e)
         {
+            // 入力内容をトリムする。
+            txtInput.Text = txtInput.Text.Trim();
+            // 入力内容が空でない場合は以下の処理を実行する。
+            if (txtInput.Text != "")
+            {
+                // 書き込む内容を取得する
+                string log = LogFileManager.GetLogSentence(txtInput.Text);
+                // 書き込む
+                Write(log);
+                // 入力欄をクリアする。
+                txtInput.Clear();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="log"></param>
+        private void Write(string log)
+        {
             try
             {
-                // 入力内容をトリムする。
-                txtInput.Text = txtInput.Text.Trim();
+                // 入力内容を渡してWriteメソッドを呼び出す
+                LogFileManager.Write(log);
 
-                // 入力内容が空でない場合は以下の処理を実行する。
-                if (txtInput.Text != "")
-                {
-                    // 書き込む内容を取得する
-                    string log = LogFileManager.GetLogSentence(txtInput.Text);
+                // テキストビューア更新
+                txtViewer.AppendText(log);
 
-                    // 入力内容を渡してWriteメソッドを呼び出す
-                    LogFileManager.Write(log);
-
-                    // テキストビューア更新
-                    txtViewer.AppendText(log);
-
-                    // 入力欄をクリアする。
-                    txtInput.Clear();
-
-                    // スクロール位置調整
-                    MoveToLast();
-                }
+                // スクロール位置調整
+                MoveToLast();
             }
             catch (Exception ex)
             {
@@ -130,6 +137,18 @@ namespace JibunLog
             txtViewer.Focus();
             txtViewer.ScrollToCaret();
             txtInput.Focus();
+        }
+
+        /// <summary>
+        /// 区切り線を書き込みます。
+        /// </summary>
+        /// <param name="sender">イベント発生オブジェクト</param>
+        /// <param name="e">イベント引数</param>
+        private void btnSeparate_Click(object sender, EventArgs e)
+        {
+            string log = "============================================================ "
+                + LogFileManager.GetDateString() + LogFileManager.LINE_SEPARATOR + LogFileManager.LINE_SEPARATOR;
+            Write(log);
         }
     }
 }

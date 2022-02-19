@@ -34,6 +34,7 @@
             this.txtInput = new System.Windows.Forms.TextBox();
             this.btnWrite = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnSeparate = new System.Windows.Forms.Button();
             this.btnLogFolder = new System.Windows.Forms.Button();
             this.timScroll = new System.Windows.Forms.Timer(this.components);
             this.btnReload = new System.Windows.Forms.Button();
@@ -96,12 +97,24 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnSeparate);
             this.splitContainer1.Panel2.Controls.Add(this.txtInput);
             this.splitContainer1.Panel2.Controls.Add(this.btnWrite);
             this.splitContainer1.Panel2MinSize = 64;
             this.splitContainer1.Size = new System.Drawing.Size(608, 408);
             this.splitContainer1.SplitterDistance = 301;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // btnSeparate
+            // 
+            this.btnSeparate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSeparate.Location = new System.Drawing.Point(560, 0);
+            this.btnSeparate.Name = "btnSeparate";
+            this.btnSeparate.Size = new System.Drawing.Size(48, 40);
+            this.btnSeparate.TabIndex = 3;
+            this.btnSeparate.Text = "区切る";
+            this.btnSeparate.UseVisualStyleBackColor = true;
+            this.btnSeparate.Click += new System.EventHandler(this.btnSeparate_Click);
             // 
             // btnLogFolder
             // 
@@ -159,6 +172,7 @@
         private System.Windows.Forms.Button btnLogFolder;
         private System.Windows.Forms.Timer timScroll;
         private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.Button btnSeparate;
     }
 }
 
