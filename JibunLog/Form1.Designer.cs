@@ -34,14 +34,19 @@
             this.txtInput = new System.Windows.Forms.TextBox();
             this.btnWrite = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnSeparate = new System.Windows.Forms.Button();
-            this.btnLogFolder = new System.Windows.Forms.Button();
             this.timScroll = new System.Windows.Forms.Timer(this.components);
-            this.btnReload = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ファイルToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.再読込ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.過去ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.編集EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.編集ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.区切るToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtViewer
@@ -72,10 +77,11 @@
             // 
             // btnWrite
             // 
-            this.btnWrite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWrite.Location = new System.Drawing.Point(560, 39);
+            this.btnWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnWrite.Location = new System.Drawing.Point(560, 0);
             this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(48, 64);
+            this.btnWrite.Size = new System.Drawing.Size(48, 103);
             this.btnWrite.TabIndex = 2;
             this.btnWrite.Text = "書込";
             this.btnWrite.UseVisualStyleBackColor = true;
@@ -97,7 +103,6 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnSeparate);
             this.splitContainer1.Panel2.Controls.Add(this.txtInput);
             this.splitContainer1.Panel2.Controls.Add(this.btnWrite);
             this.splitContainer1.Panel2MinSize = 64;
@@ -105,51 +110,76 @@
             this.splitContainer1.SplitterDistance = 301;
             this.splitContainer1.TabIndex = 3;
             // 
-            // btnSeparate
-            // 
-            this.btnSeparate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSeparate.Location = new System.Drawing.Point(560, 0);
-            this.btnSeparate.Name = "btnSeparate";
-            this.btnSeparate.Size = new System.Drawing.Size(48, 40);
-            this.btnSeparate.TabIndex = 3;
-            this.btnSeparate.Text = "区切る";
-            this.btnSeparate.UseVisualStyleBackColor = true;
-            this.btnSeparate.Click += new System.EventHandler(this.btnSeparate_Click);
-            // 
-            // btnLogFolder
-            // 
-            this.btnLogFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogFolder.Location = new System.Drawing.Point(544, 0);
-            this.btnLogFolder.Name = "btnLogFolder";
-            this.btnLogFolder.Size = new System.Drawing.Size(75, 23);
-            this.btnLogFolder.TabIndex = 4;
-            this.btnLogFolder.Text = "過去";
-            this.btnLogFolder.UseVisualStyleBackColor = true;
-            this.btnLogFolder.Click += new System.EventHandler(this.btnLogFolder_Click);
-            // 
             // timScroll
             // 
             this.timScroll.Tick += new System.EventHandler(this.timScroll_Tick);
             // 
-            // btnReload
+            // menuStrip1
             // 
-            this.btnReload.Location = new System.Drawing.Point(8, 0);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(75, 23);
-            this.btnReload.TabIndex = 5;
-            this.btnReload.Text = "再読込";
-            this.btnReload.UseVisualStyleBackColor = true;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ファイルToolStripMenuItem,
+            this.編集EToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(624, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ファイルToolStripMenuItem
+            // 
+            this.ファイルToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.再読込ToolStripMenuItem,
+            this.過去ToolStripMenuItem});
+            this.ファイルToolStripMenuItem.Name = "ファイルToolStripMenuItem";
+            this.ファイルToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.ファイルToolStripMenuItem.Text = "ファイル(&F)";
+            // 
+            // 再読込ToolStripMenuItem
+            // 
+            this.再読込ToolStripMenuItem.Name = "再読込ToolStripMenuItem";
+            this.再読込ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.再読込ToolStripMenuItem.Text = "再読込";
+            this.再読込ToolStripMenuItem.Click += new System.EventHandler(this.再読込ToolStripMenuItem_Click);
+            // 
+            // 過去ToolStripMenuItem
+            // 
+            this.過去ToolStripMenuItem.Name = "過去ToolStripMenuItem";
+            this.過去ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.過去ToolStripMenuItem.Text = "過去";
+            this.過去ToolStripMenuItem.Click += new System.EventHandler(this.過去ToolStripMenuItem_Click);
+            // 
+            // 編集EToolStripMenuItem
+            // 
+            this.編集EToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.編集ToolStripMenuItem1,
+            this.区切るToolStripMenuItem});
+            this.編集EToolStripMenuItem.Name = "編集EToolStripMenuItem";
+            this.編集EToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.編集EToolStripMenuItem.Text = "編集(&E)";
+            // 
+            // 編集ToolStripMenuItem1
+            // 
+            this.編集ToolStripMenuItem1.Name = "編集ToolStripMenuItem1";
+            this.編集ToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.編集ToolStripMenuItem1.Text = "編集";
+            this.編集ToolStripMenuItem1.Click += new System.EventHandler(this.編集ToolStripMenuItem1_Click);
+            // 
+            // 区切るToolStripMenuItem
+            // 
+            this.区切るToolStripMenuItem.Name = "区切るToolStripMenuItem";
+            this.区切るToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.区切るToolStripMenuItem.Text = "区切る";
+            this.区切るToolStripMenuItem.Click += new System.EventHandler(this.区切るToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.btnReload);
-            this.Controls.Add(this.btnLogFolder);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "自分ログ";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -159,7 +189,10 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -169,10 +202,14 @@
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Button btnWrite;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnLogFolder;
         private System.Windows.Forms.Timer timScroll;
-        private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.Button btnSeparate;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem ファイルToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 再読込ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 過去ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 編集EToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 編集ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 区切るToolStripMenuItem;
     }
 }
 

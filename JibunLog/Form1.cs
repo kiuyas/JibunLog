@@ -97,27 +97,6 @@ namespace JibunLog
         }
 
         /// <summary>
-        /// 再読込ボタン押下時処理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            ShowLog();
-        }
-
-        /// <summary>
-        /// 過去ログフォルダを表示します。
-        /// </summary>
-        /// <param name="sender">イベント発生オブジェクト</param>
-        /// <param name="e">イベント引数</param>
-        private void btnLogFolder_Click(object sender, EventArgs e)
-        {
-            Process.Start(LogFileManager.GetLogFolder());
-            txtInput.Focus();
-        }
-
-        /// <summary>
         /// スクロールタイマーTICK時処理
         /// </summary>
         /// <param name="sender">イベント発生オブジェクト</param>
@@ -139,16 +118,69 @@ namespace JibunLog
             txtInput.Focus();
         }
 
+
+        #region ファンクション
+
+        private void 再読込ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reload();
+        }
+
+        private void 過去ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowOldLogFolder();
+        }
+
+        private void 編集ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            EditThisMonth();
+        }
+
+        private void 区切るToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddSeparator();
+        }
+
+        #endregion
+
+        #region 処理
+
+        /// <summary>
+        /// 再読込ボタン押下時処理
+        /// </summary>
+        private void Reload()
+        {
+            ShowLog();
+        }
+
+        /// <summary>
+        /// 過去ログフォルダを表示します。
+        /// </summary>
+        private void ShowOldLogFolder()
+        {
+            Process.Start(LogFileManager.GetLogFolder());
+            txtInput.Focus();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void EditThisMonth()
+        {
+            Process.Start(LogFileManager.GetLogFilePath());
+        }
+
         /// <summary>
         /// 区切り線を書き込みます。
         /// </summary>
-        /// <param name="sender">イベント発生オブジェクト</param>
-        /// <param name="e">イベント引数</param>
-        private void btnSeparate_Click(object sender, EventArgs e)
+        private void AddSeparator()
         {
             string log = "============================================================ "
                 + LogFileManager.GetDateString() + LogFileManager.LINE_SEPARATOR + LogFileManager.LINE_SEPARATOR;
             Write(log);
         }
+
+
+        #endregion
     }
 }
