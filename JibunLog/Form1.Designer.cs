@@ -42,11 +42,14 @@
             this.編集EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.編集ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.区切るToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.引用符付き貼り付けQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtViewer
@@ -67,6 +70,7 @@
             this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtInput.ContextMenuStrip = this.contextMenuStrip1;
             this.txtInput.Font = new System.Drawing.Font("ＭＳ ゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.txtInput.Location = new System.Drawing.Point(0, 0);
             this.txtInput.Multiline = true;
@@ -171,6 +175,20 @@
             this.区切るToolStripMenuItem.Text = "区切る";
             this.区切るToolStripMenuItem.Click += new System.EventHandler(this.区切るToolStripMenuItem_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.引用符付き貼り付けQToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(190, 26);
+            // 
+            // 引用符付き貼り付けQToolStripMenuItem
+            // 
+            this.引用符付き貼り付けQToolStripMenuItem.Name = "引用符付き貼り付けQToolStripMenuItem";
+            this.引用符付き貼り付けQToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.引用符付き貼り付けQToolStripMenuItem.Text = "引用符付き貼り付け(&Q)";
+            this.引用符付き貼り付けQToolStripMenuItem.Click += new System.EventHandler(this.引用符付き貼り付けQToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -182,7 +200,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "自分ログ";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -191,6 +208,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,6 +228,8 @@
         private System.Windows.Forms.ToolStripMenuItem 編集EToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 編集ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 区切るToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 引用符付き貼り付けQToolStripMenuItem;
     }
 }
 

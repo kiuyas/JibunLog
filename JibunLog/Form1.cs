@@ -9,20 +9,24 @@ namespace JibunLog
     /// </summary>
     public partial class Form1 : Form
     {
+        #region 初期処理
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public Form1()
         {
             InitializeComponent();
+
+            PrepareFolder();
+
+            ShowLog();
         }
 
         /// <summary>
-        /// フォームロード時処理
+        /// 出力フォルダの準備
         /// </summary>
-        /// <param name="sender">イベント発生オブジェクト</param>
-        /// <param name="e">イベント引数</param>
-        private void Form1_Load(object sender, EventArgs e)
+        private void PrepareFolder()
         {
             string logFolderPath = LogFileManager.GetLogFolder();
 
@@ -31,9 +35,11 @@ namespace JibunLog
                 MessageBox.Show(this, "ログフォルダを作成できません。終了します。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
             }
-
-            ShowLog();
         }
+
+        #endregion
+
+        #region イベント
 
         /// <summary>
         /// 書き込みボタンクリック時処理
@@ -57,46 +63,6 @@ namespace JibunLog
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="log"></param>
-        private void Write(string log)
-        {
-            try
-            {
-                // 入力内容を渡してWriteメソッドを呼び出す
-                LogFileManager.Write(log);
-
-                // テキストビューア更新
-                txtViewer.AppendText(log);
-
-                // スクロール位置調整
-                MoveToLast();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        /// <summary>
-        /// ログを表示します。
-        /// </summary>
-        private void ShowLog()
-        {
-            try
-            {
-                txtViewer.Text = LogFileManager.Read();
-                timScroll.Start();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
-        }
-
-        /// <summary>
         /// スクロールタイマーTICK時処理
         /// </summary>
         /// <param name="sender">イベント発生オブジェクト</param>
@@ -107,17 +73,7 @@ namespace JibunLog
             MoveToLast();
         }
 
-        /// <summary>
-        /// ビュアーのスクロール位置を最終行に合わせます。
-        /// </summary>
-        private void MoveToLast()
-        {
-            txtViewer.SelectionStart = txtViewer.Text.Length;
-            txtViewer.Focus();
-            txtViewer.ScrollToCaret();
-            txtInput.Focus();
-        }
-
+        #endregion
 
         #region ファンクション
 
@@ -139,6 +95,24 @@ namespace JibunLog
         private void 区切るToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddSeparator();
+        }
+
+        #endregion
+
+        #region コンテキストメニュー
+
+        /// <summary>
+        /// 引用符付き貼り付け
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void 引用符付き貼り付けQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                var text = Clipboard.GetText();
+                txtInput.AppendText(LogFileManager.MakeQuotedString(text));
+            }
         }
 
         #endregion
@@ -180,7 +154,58 @@ namespace JibunLog
             Write(log);
         }
 
+        /// <summary>
+        /// ログを書き込む
+        /// </summary>
+        /// <param name="log"></param>
+        private void Write(string log)
+        {
+            try
+            {
+                // 入力内容を渡してWriteメソッドを呼び出す
+                LogFileManager.Write(log);
+
+                // テキストビューア更新
+                txtViewer.AppendText(log);
+
+                // スクロール位置調整
+                MoveToLast();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// ログを表示します。
+        /// </summary>
+        private void ShowLog()
+        {
+            try
+            {
+                txtViewer.Text = LogFileManager.Read();
+                timScroll.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
+        /// <summary>
+        /// ビュアーのスクロール位置を最終行に合わせます。
+        /// </summary>
+        private void MoveToLast()
+        {
+            txtViewer.SelectionStart = txtViewer.Text.Length;
+            txtViewer.Focus();
+            txtViewer.ScrollToCaret();
+            txtInput.Focus();
+        }
 
         #endregion
+
     }
 }

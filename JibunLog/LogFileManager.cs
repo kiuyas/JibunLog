@@ -162,5 +162,20 @@ namespace JibunLog
 
             return result;
         }
+
+        /// <summary>
+        /// 引用符付きテキストを作る
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static string MakeQuotedString(string text)
+        {
+            var lines = text.Replace("\r", "").Split('\n');
+            for (var i = 0; i < lines.Length; i++)
+            {
+                lines[i] = "> " + lines[i];
+            }
+            return string.Join("\r\n", lines);
+        }
     }
 }
